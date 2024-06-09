@@ -27,13 +27,13 @@
                 {% for field in form %}
                     {% for error in field.errors %}
                         <div class="mb-5 p-4 rounded-xl text-red-500 bg-white">
-                            <p>{{field.label}} {{error|escape}}</p>
+                            <p>{{field.label}}: {{error|escape}}</p>
                         </div>
                     {%endfor%}
                 {%endfor%}
             {%endif%}
 
-            <button type="submit" class='bg-white rounded-xl mt-2 hover:bg-red-300 py-1 px-4 font-semibold text-black'>Submit</button>
+            <button type="submit" class='bg-white rounded-xl mt-2 hover:bg-red-300 py-1 px-4 font-semibold text-black'>Sign up</button>
 
 
         </form>

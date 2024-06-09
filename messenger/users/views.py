@@ -3,6 +3,7 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import SignUpForm
 from django.contrib.auth import views as auth_views
+from django.contrib import messages
 
 
 def frontpage(request):
