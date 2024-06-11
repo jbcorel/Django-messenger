@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-r1dsg21fn9gbpw#0oqzfsla718xp3%+7v(7_k6gmq5tvckv*jj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 LOGIN_REDIRECT_URL = '/chats/'
 LOGOUT_REDIRECT_URL = 'frontpage'
@@ -36,6 +36,7 @@ LOGIN_URL = '/login/'
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
