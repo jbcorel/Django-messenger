@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
-LOGIN_REDIRECT_URL = '/chats/'
+LOGIN_REDIRECT_URL = 'show_chats'
 LOGOUT_REDIRECT_URL = 'frontpage'
 LOGIN_URL = '/login/'
 

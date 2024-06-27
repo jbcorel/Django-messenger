@@ -16,7 +16,7 @@ def signup(request):
             user = form.save()
             login(request, user)
             
-            return redirect(to='frontpage')
+            return redirect(to='show_chats')
     else:
         form = SignUpForm()
     return render(request, 'users/signup.html', {'form': form})
