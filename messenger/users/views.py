@@ -1,23 +1,22 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, logout
-from django.contrib.auth.decorators import login_required
-from .forms import SignUpForm
-from django.contrib.auth import views as auth_views
-from django.contrib import messages
-
+from django.contrib.auth import login
+from .forms import UserCreationForm
+from .tasks import sendMailToNewUser
 
 def frontpage(request):
     return render(request, 'users/frontpage.html', {})
 
+##should be for non_authenticated users only
+##similar for login view
 def signup(request):
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
-            
-            return redirect(to='show_chats')
+            sendMailToNewUser.delay_on_commit(user.pk)
+            print (f'PK of user dur signup= {user.pk}')
+            return redirect(to='users:login')
     else:
-        form = SignUpForm()
+        form = UserCreationForm()
     return render(request, 'users/signup.html', {'form': form})
 

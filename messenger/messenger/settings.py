@@ -9,12 +9,13 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+from dotenv import dotenv_values
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+config = dotenv_values(BASE_DIR / ".env")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -27,16 +28,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
-LOGIN_REDIRECT_URL = 'show_chats'
-LOGOUT_REDIRECT_URL = 'frontpage'
-LOGIN_URL = '/login/'
-
-
-
 # Application definition
 
 INSTALLED_APPS = [
     'daphne',
+    'django_celery_results',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -93,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'chat_app',
         'USER': 'postgres',
-        'PASSWORD': '12345678',
+        'PASSWORD': '123321',
         'HOST': 'localhost',
         'PORT': '5432'
     }
@@ -139,4 +135,24 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
+AUTH_USER_MODEL = "users.MyUser"
+
+LOGIN_REDIRECT_URL = 'chats:show_chats'
+LOGOUT_REDIRECT_URL = 'users:login'
+LOGIN_URL = 'users:login'
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = config['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = config['EMAIL_HOST_PASSWORD']
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+DEFAULT_FROM_EMAIL = config['DEFAULT_FROM_EMAIL']
+
+CELERY_BROKER_URL=config['CELERY_BROKER_URL']
+CELERY_RESULT_BACKEND = 'django-db'

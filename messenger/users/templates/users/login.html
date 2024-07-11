@@ -20,13 +20,9 @@
             </div>
 
             {% if form.errors%}
-                {% for field in form %}
-                    {% for error in field.errors %}
-                        <div class="mb-5 p-4 rounded-xl text-red-500 bg-white">
-                            <p>{{field.label}}: {{error|escape}}</p>
-                        </div>
-                    {%endfor%}
-                {%endfor%}
+                <div class="mb-5 p-4 rounded-xl text-red-500 bg-white">
+                    <p>Enter valid username and password. Note that both fields may be case-sensitive. </p>
+                </div>
             {%endif%}
 
             <button type="submit" class='bg-white rounded-xl mt-2 hover:bg-red-300 py-1 px-4 font-semibold text-black'>Log in</button>

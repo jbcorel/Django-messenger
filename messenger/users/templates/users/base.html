@@ -17,19 +17,20 @@
             {%if request.user.is_authenticated%}
                 <span class="text-red-400">{{request.user.username}}</span>
                 <a href="/chats/" class="text-white hover:text-red-400">Chats</a>
-                <form method="post" action="{% url 'logout' %}">
+                <form method="post" action="{% url 'users:logout' %}">
                     {% csrf_token %}
                     <button type="submit" class="py-3 text-white px-5 rounded-xl bg-teal-500 hover:bg-teal-800">Log out</button>
                 </form>
                 <!-- <a href="/logout/" class='py-3 text-white px-5 rounded-xl bg-teal-500 hover:bg-teal-800'>Log out</a> -->
             {% else %}
-                <a href="/login/" class="text-white hover:text-red-400">Log in</a>
-                <a href="/signup" class="py-3 text-white px-5 rounded-xl bg-teal-500 hover:bg-teal-800">Sign up</a>
+                <a href="{% url 'users:login' %}" class="text-white hover:text-red-400">Log in</a>
+                <a href="{% url 'users:signup' %}" class="py-3 text-white px-5 rounded-xl bg-teal-500 hover:bg-teal-800">Sign up</a>
             {%endif%}
         </div>
     </nav>
+
     {% block content %}
-    something went wrong, the server is probably dead :\( RIP
+    something went wrong, Must be a problem from the server side. Try reloading the page!
     {% endblock %}
     {% block scripts %}
     {% endblock %}

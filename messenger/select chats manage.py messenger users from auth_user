@@ -1,0 +1,34 @@
+                            List of relations
+ Schema |                   Name                    |   Type   |  Owner   
+--------+-------------------------------------------+----------+----------
+ public | auth_group                                | table    | postgres
+ public | auth_group_id_seq                         | sequence | postgres
+ public | auth_group_permissions                    | table    | postgres
+ public | auth_group_permissions_id_seq             | sequence | postgres
+ public | auth_permission                           | table    | postgres
+ public | auth_permission_id_seq                    | sequence | postgres
+ public | auth_user                                 | table    | postgres
+ public | auth_user_groups                          | table    | postgres
+ public | auth_user_groups_id_seq                   | sequence | postgres
+ public | auth_user_id_seq                          | sequence | postgres
+ public | auth_user_user_permissions                | table    | postgres
+ public | auth_user_user_permissions_id_seq         | sequence | postgres
+ public | chats_message                             | table    | postgres
+ public | chats_message_id_seq                      | sequence | postgres
+ public | chats_room                                | table    | postgres
+ public | chats_room_id_seq                         | sequence | postgres
+ public | django_admin_log                          | table    | postgres
+ public | django_admin_log_id_seq                   | sequence | postgres
+ public | django_celery_results_chordcounter        | table    | postgres
+ public | django_celery_results_chordcounter_id_seq | sequence | postgres
+ public | django_celery_results_groupresult         | table    | postgres
+ public | django_celery_results_groupresult_id_seq  | sequence | postgres
+ public | django_celery_results_taskresult          | table    | postgres
+ public | django_celery_results_taskresult_id_seq   | sequence | postgres
+ public | django_content_type                       | table    | postgres
+ public | django_content_type_id_seq                | sequence | postgres
+ public | django_migrations                         | table    | postgres
+ public | django_migrations_id_seq                  | sequence | postgres
+ public | django_session                            | table    | postgres
+(29 rows)
+
