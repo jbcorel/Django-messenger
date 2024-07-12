@@ -1,0 +1,30 @@
+{% csrf_token %}
+<div>
+    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter a name for your room</label>
+    <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Your room name..." required />
+</div>
+<div>
+    <label for="slug" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter a slug for your room</label>
+    <input type="text" name="slug" id="slug" placeholder="Your room slug..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+</div>
+<div>
+    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter a password for your room</label>
+    <input type="password" name="password" id="password" placeholder="Room password..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+</div>
+<input type="hidden" name="creator_id" value="{{request.user.pk}}">
+
+{% if form.errors%}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="mb-5 p-4 rounded-xl text-red-500 bg-white">
+                <p>{{error|escape}}</p>
+            </div>
+        {%endfor%}
+    {%endfor%}
+    {% for error in form.non_field_errors %}
+        <div class="mb-5 p-4 rounded-xl text-red-500 bg-white">
+            <p>{{ error|escape }}</p>
+        </div>
+    {% endfor %}
+{%endif%}
+<button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create Room</button>

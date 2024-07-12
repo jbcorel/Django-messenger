@@ -10,7 +10,7 @@ def sendMailToNewUser (pk):
     user = MyUser.objects.get(pk=pk)
     print (f'PK of user during send mail = {user.pk}')
     to = user.email 
-    context_data = {'username': user.username}
+    context_data = {'username': user.get_username()}
     subject = 'Добро пожаловать!'
     text_content = f"""
         Dear {to},

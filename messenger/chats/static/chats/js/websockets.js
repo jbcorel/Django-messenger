@@ -1,5 +1,8 @@
     const roomName = JSON.parse(document.getElementById('json-roomslug').textContent);
     const userName = JSON.parse(document.getElementById('json-username').textContent);
+    const startConvoHTML = '<div id="start-conversation" class="p-4 bg-gray-200 rounded-xl">' +
+                            '<p class="font-semibold">You</p>' + 
+                            '<p class="">Start conversation...<p></div>';
 
 
     const chatSocket = new WebSocket(
@@ -41,4 +44,4 @@
 
         messageInput.value = '';
         return false;
-    }
+    };

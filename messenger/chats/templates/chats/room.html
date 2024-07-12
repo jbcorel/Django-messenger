@@ -10,14 +10,14 @@
         <div class="chat-messages space-y-3 p-4" id="chat-messages">
             {% if messages %}
                 {% for message in messages %}
-                    <div class="p-4 bg-gray-200 rounded-xl">
-                        <p class="font-semibold">{{message.user}}</p>
+                    <div id="message" class="p-4 bg-gray-200 rounded-xl">
+                        <p class="font-semibold">{{message.user.username}}</p>
                         <p class="">{{message.content}}</p>
                     </div>
                 {%endfor%}
             {% else %}
-                <div class="p-4 bg-gray-200 rounded-xl">
-                    <p class="font-semibold">You</p>
+                <div id="start-conversation" class="p-4 bg-gray-200 rounded-xl">
+                    <p class="font-semibold">Chat</p>
                     <p class="">Start conversation...<p>
                 </div>
             {% endif %}
